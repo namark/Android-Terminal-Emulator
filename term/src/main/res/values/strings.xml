@@ -152,6 +152,11 @@
   <string name="email_transcript_chooser_title">Mail transcript using:</string>
   <string name="email_transcript_no_email_activity_found">Could not choose an email activity to send transcript.</string>
 
+  <!-- TODO (namark): these need localisation -->
+  <string name="volume_down_sends_esc">Volume Down button sends ESC</string>
+  <string name="volume_down_sends_esc_summary_on">Volume Down button sends ESC.</string>
+  <string name="volume_down_sends_esc_summary_off">Volume Down button does not send ESC.</string>
+
   <string name="alt_sends_esc">Alt key sends ESC</string>
   <string name="alt_sends_esc_summary_on">Alt key sends ESC.</string>
   <string name="alt_sends_esc_summary_off">Alt key does not send ESC.</string>

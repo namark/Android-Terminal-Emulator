@@ -56,6 +56,8 @@ public class TermSettings {
 
     private boolean mAltSendsEsc;
 
+    private boolean mVolumeDownSendsEsc;
+
     private boolean mMouseTracking;
 
     private boolean mUseKeyboardShortcuts;
@@ -79,6 +81,7 @@ public class TermSettings {
     private static final String PATHPREPEND_KEY = "allow_prepend_path";
     private static final String HOMEPATH_KEY = "home_path";
     private static final String ALT_SENDS_ESC = "alt_sends_esc";
+    private static final String VOLUME_DOWN_SENDS_ESC = "volume_down_sends_esc";
     private static final String MOUSE_TRACKING = "mouse_tracking";
     private static final String USE_KEYBOARD_SHORTCUTS = "use_keyboard_shortcuts";
 
@@ -180,6 +183,7 @@ public class TermSettings {
         mAllowPathPrepend = res.getBoolean(R.bool.pref_allow_prepend_path_default);
         // the mHomePath default is set dynamically in readPrefs()
         mAltSendsEsc = res.getBoolean(R.bool.pref_alt_sends_esc_default);
+		mVolumeDownSendsEsc = res.getBoolean(R.bool.pref_volume_down_sends_esc_default);
         mMouseTracking = res.getBoolean(R.bool.pref_mouse_tracking_default);
         mUseKeyboardShortcuts = res.getBoolean(R.bool.pref_use_keyboard_shortcuts_default);
     }
@@ -209,6 +213,7 @@ public class TermSettings {
         mAllowPathPrepend = readBooleanPref(PATHPREPEND_KEY, mAllowPathPrepend);
         mHomePath = readStringPref(HOMEPATH_KEY, mHomePath);
         mAltSendsEsc = readBooleanPref(ALT_SENDS_ESC, mAltSendsEsc);
+		mVolumeDownSendsEsc = readBooleanPref(VOLUME_DOWN_SENDS_ESC, mVolumeDownSendsEsc);
         mMouseTracking = readBooleanPref(MOUSE_TRACKING, mMouseTracking);
         mUseKeyboardShortcuts = readBooleanPref(USE_KEYBOARD_SHORTCUTS,
                 mUseKeyboardShortcuts);
@@ -273,6 +278,10 @@ public class TermSettings {
 
     public boolean backKeySendsCharacter() {
         return mBackKeyAction >= BACK_KEY_SENDS_ESC;
+    }
+
+    public boolean getVolumeDownSendsEscFlag() {
+        return mVolumeDownSendsEsc;
     }
 
     public boolean getAltSendsEscFlag() {

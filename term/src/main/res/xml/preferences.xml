@@ -138,6 +138,12 @@
                 android:entryValues="@array/entryvalues_ime_preference"
                 android:dialogTitle="@string/dialog_title_ime_preference" />
 
+        <CheckBoxPreference android:title="@string/volume_down_sends_esc"
+                android:key="volume_down_sends_esc"
+                android:defaultValue="@bool/pref_volume_down_sends_esc_default"
+                android:summaryOn="@string/volume_down_sends_esc_summary_on"
+                android:summaryOff="@string/volume_down_sends_esc_summary_off" />
+
         <CheckBoxPreference android:title="@string/alt_sends_esc"
                 android:key="alt_sends_esc"
                 android:defaultValue="@bool/pref_alt_sends_esc_default"

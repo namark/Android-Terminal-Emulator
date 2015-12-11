@@ -160,6 +160,7 @@ public class EmulatorView extends View implements GestureDetector.OnGestureListe
     private boolean mIsSelectingText = false;
 
     private boolean mBackKeySendsCharacter = false;
+    private boolean mVolumeDownSendsEsc = false;
     private int mControlKeyCode;
     private int mFnKeyCode;
     private boolean mIsControlKeySent = false;
@@ -1277,6 +1278,7 @@ public class EmulatorView extends View implements GestureDetector.OnGestureListe
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        /* Toast.makeText(getContext().getApplicationContext(),String.valueOf(keyCode), Toast.LENGTH_SHORT).show(); */
         if (LOG_KEY_EVENTS) {
             Log.w(TAG, "onKeyDown " + keyCode);
         }
@@ -1310,7 +1312,8 @@ public class EmulatorView extends View implements GestureDetector.OnGestureListe
 
     /** Do we want to intercept this system key? */
     private boolean isInterceptedSystemKey(int keyCode) {
-        return keyCode == KeyEvent.KEYCODE_BACK && mBackKeySendsCharacter;
+        return keyCode == KeyEvent.KEYCODE_BACK && mBackKeySendsCharacter
+        || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && mVolumeDownSendsEsc;
     }
 
     /**
@@ -1638,6 +1641,15 @@ public class EmulatorView extends View implements GestureDetector.OnGestureListe
     public void setBackKeyCharacter(int keyCode) {
         mKeyListener.setBackKeyCharacter(keyCode);
         mBackKeySendsCharacter = (keyCode != 0);
+    }
+
+    /**
+     * Set wheather Volume Down would act as ESC
+     * @param flag
+     */
+    public void setVolumeDownSendsEsc(boolean flag) {
+        mKeyListener.setVolumeDownSendsEsc(flag);
+        mVolumeDownSendsEsc = flag;
     }
 
     /**

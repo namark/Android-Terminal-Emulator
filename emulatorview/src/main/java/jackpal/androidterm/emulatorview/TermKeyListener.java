@@ -306,6 +306,7 @@ class TermKeyListener {
 
     private int mBackKeyCode;
     private boolean mAltSendsEsc;
+    private boolean mVolumeDownSendsEsc;
 
     private int mCombiningAccent;
 
@@ -328,6 +329,10 @@ class TermKeyListener {
 
     public void setAltSendsEsc(boolean flag) {
         mAltSendsEsc = flag;
+    }
+
+    public void setVolumeDownSendsEsc(boolean flag) {
+        mVolumeDownSendsEsc = flag;
     }
 
     public void handleHardwareControlKey(boolean down) {
@@ -553,6 +558,13 @@ class TermKeyListener {
             result = mBackKeyCode;
             break;
 
+        case KeyEvent.KEYCODE_VOLUME_DOWN:
+            if(mVolumeDownSendsEsc)
+            {
+                result = 27; // TODO (namark): use a proper key code constant
+            }
+            break;
+
         default: {
             int metaState = event.getMetaState();
             chordedCtrl = ((META_CTRL_ON & metaState) != 0);
@@ -738,6 +750,10 @@ class TermKeyListener {
 
     public boolean getAltSendsEsc() {
         return mAltSendsEsc;
+    }
+
+    public boolean getVolumeDownSendsEsc() {
+        return mVolumeDownSendsEsc;
     }
 
     public boolean isAltActive() {
